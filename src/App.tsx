@@ -6,10 +6,6 @@ import gsap from "gsap";
 import { useState, useLayoutEffect } from "react";
 
 export default function App() {
-  // const [cursorPosition, setCursorPosition] = useState<{
-  //   x: number;
-  //   y: number;
-  // }>({ x: 0, y: 0 });
   const [loaderFinished, setLoaderFinished] = useState<boolean>(false);
   const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
@@ -25,21 +21,8 @@ export default function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const onMouseMove = (e: MouseEvent) => {
-  //     setCursorPosition({ x: e.clientX, y: e.clientY });
-  //   };
-
-  //   window.addEventListener("mousemove", onMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener("mousemove", onMouseMove);
-  //   };
-  // }, []);
-
   return (
-    <main>
-      {/* <Cursor cursorPosition={cursorPosition} /> */}
+    <main className="font-custom">
       {loaderFinished ? <WeatherPage /> : <Loader timeline={timeline} />}
     </main>
   );

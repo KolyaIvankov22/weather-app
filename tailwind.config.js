@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        custom: ["Avant Garde Book BT", "sans-serif"],
+      },
       colors: {
         bgColor: "#0f0f0f",
         formColor: "#ec4e39",
