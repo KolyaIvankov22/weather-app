@@ -42,14 +42,19 @@ export interface WeatherIconProps {
   weatherMain?: string | null;
 }
 
-export interface CursorProps {
-  cursorPosition: { x: number; y: number };
-}
-
 export interface AnimationRefType {
   current: HTMLElement | null;
 }
 
 export interface LoaderProps {
   timeline: gsap.core.Timeline | null;
+}
+
+export interface CursorProps {
+  isActive: boolean;
+}
+
+export interface Mouse {
+  x: number;
+  y: number;
 }

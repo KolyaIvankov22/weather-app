@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { TbTemperatureCelsius } from "react-icons/tb";
 import { ImSpinner8 } from "react-icons/im";
 import { fetchWeatherData } from "../service/Service";
+import Cursor from "../cursor/Cursor";
 import { WeatherState } from "../interface/Interface";
 import WeatherIcon from "../weatherIcons/WeatherIcons";
 import WeatherDetails from "../weatherDetails/weatherDetails";
@@ -10,6 +11,7 @@ import WeatherSearchForm from "../weatherSearchForm/WeatherSearchForm";
 export default function WeatherPage() {
   const [location, setLocation] = useState<string>("Oslo");
   const [data, setData] = useState<WeatherState | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [animate, setAnimate] = useState<boolean>(false);
@@ -63,7 +65,15 @@ export default function WeatherPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen px-4 bg-center bg-no-repeat bg-cover bg-bgColor lg:px-0">
+    <div
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+      className="flex flex-col items-center justify-center w-full h-screen px-4 bg-center bg-no-repeat bg-cover mt-7 bg-bgColor lg:px-0"
+    >
       {errorMsg && (
         <div className="text-red-500">
           {typeof errorMsg === "string" ? errorMsg : errorMsg.message}
@@ -114,6 +124,7 @@ export default function WeatherPage() {
           </div>
         )}
       </div>
+      <Cursor isActive={isHovered} />
     </div>
   );
 }
